@@ -1,6 +1,0 @@
-framework module Pods_EventTest_EventTestUITests {
-  umbrella header "Pods-EventTest-EventTestUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
