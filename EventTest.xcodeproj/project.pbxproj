@@ -29,8 +29,6 @@
 		180B6ED0257F7D5F00CC03BB /* YLLongPressDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B6E6B257F7D5F00CC03BB /* YLLongPressDisplayView.swift */; };
 		180B6ED1257F7D5F00CC03BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B6E6C257F7D5F00CC03BB /* AppDelegate.swift */; };
 		180B6ED3257F7D5F00CC03BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B6E6E257F7D5F00CC03BB /* SceneDelegate.swift */; };
-		180B6F36257F81D200CC03BB /* PageBusniess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B6F34257F81D200CC03BB /* PageBusniess.swift */; };
-		180B6F37257F81D200CC03BB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B6F35257F81D200CC03BB /* ViewModel.swift */; };
 		180C41B325C1620500E07625 /* EvaluateExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C41B225C1620500E07625 /* EvaluateExpressionParser.swift */; };
 		180F440825AEDA500035ADD1 /* AsyncRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180F440725AEDA500035ADD1 /* AsyncRender.swift */; };
 		1813C20A25073D7B00BDC530 /* EventTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813C20925073D7B00BDC530 /* EventTestTests.swift */; };
@@ -108,8 +106,6 @@
 		180B6E6C257F7D5F00CC03BB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		180B6E6D257F7D5F00CC03BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		180B6E6E257F7D5F00CC03BB /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		180B6F34257F81D200CC03BB /* PageBusniess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageBusniess.swift; sourceTree = "<group>"; };
-		180B6F35257F81D200CC03BB /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		180C41B225C1620500E07625 /* EvaluateExpressionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluateExpressionParser.swift; sourceTree = "<group>"; };
 		180F440725AEDA500035ADD1 /* AsyncRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncRender.swift; sourceTree = "<group>"; };
 		1813C1EF25073D7900BDC530 /* EventTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,7 +193,6 @@
 				181791D9259C6BEB009BA40A /* NestedScroll */,
 				18F5F5A32581CA3600C35490 /* OpenSDK1.8.7.1 */,
 				18F5F58C2581C7CE00C35490 /* WxShareDemo */,
-				180B6F30257F81BD00CC03BB /* ViewModelTest */,
 				180B6DFA257F7D5F00CC03BB /* AlamofireTest */,
 				180B6E00257F7D5F00CC03BB /* ScrollVIewTest */,
 				180B6E02257F7D5F00CC03BB /* ThreadSafeTest */,
@@ -281,15 +276,6 @@
 				180B6E6B257F7D5F00CC03BB /* YLLongPressDisplayView.swift */,
 			);
 			path = CustomView;
-			sourceTree = "<group>";
-		};
-		180B6F30257F81BD00CC03BB /* ViewModelTest */ = {
-			isa = PBXGroup;
-			children = (
-				180B6F34257F81D200CC03BB /* PageBusniess.swift */,
-				180B6F35257F81D200CC03BB /* ViewModel.swift */,
-			);
-			path = ViewModelTest;
 			sourceTree = "<group>";
 		};
 		180F440C25AEDA560035ADD1 /* AsyncRender */ = {
@@ -716,7 +702,6 @@
 				180B6E74257F7D5F00CC03BB /* ThreadSafeTest.swift in Sources */,
 				180B6EC9257F7D5F00CC03BB /* RxChangeUIStateVC.swift in Sources */,
 				18F5F58E2581C7F500C35490 /* WxShareDemoVC.swift in Sources */,
-				180B6F36257F81D200CC03BB /* PageBusniess.swift in Sources */,
 				180B6ECE257F7D5F00CC03BB /* EONET.swift in Sources */,
 				1802B74F25A57E56000320E1 /* DefaultAnimator.swift in Sources */,
 				180B6EC8257F7D5F00CC03BB /* Swift100Tips.swift in Sources */,
@@ -727,7 +712,6 @@
 				182534F325C9202800449A91 /* TelInputTest.swift in Sources */,
 				180B6E77257F7D5F00CC03BB /* InitializerTest.swift in Sources */,
 				181791DB259C6C45009BA40A /* NestedScrollDemoVC.swift in Sources */,
-				180B6F37257F81D200CC03BB /* ViewModel.swift in Sources */,
 				180B6ED0257F7D5F00CC03BB /* YLLongPressDisplayView.swift in Sources */,
 				187AF0A325C3D88500EF949D /* SecondCountDowner.swift in Sources */,
 				187AF09D25C3D86400EF949D /* MainThreadStuckMonitor.swift in Sources */,

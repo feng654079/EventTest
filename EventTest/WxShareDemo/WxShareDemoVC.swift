@@ -19,9 +19,8 @@ class WxShareDemoVC: UIViewController {
         WXApi.startLog(by: .normal) { (txt) in
             debugPrint("\(txt)")
         }
-        //WXApi.registerApp("wxa5b486c6b918ecfb", universalLink: "")
-        //WXApi.registerApp("wxd930ea5d5a258f4f", universalLink: "https://help.wechat.com/sdksample/")
-        WXApi.registerApp("wxd930ea5d5a258f4f", universalLink: "https://www.eventest.com")
+        
+        WXApi.registerApp("", universalLink: "")
     }
     
     @IBAction func shareBtnTouched(_ sender: Any) {
