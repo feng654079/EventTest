@@ -36,6 +36,7 @@
 		1813C20A25073D7B00BDC530 /* EventTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813C20925073D7B00BDC530 /* EventTestTests.swift */; };
 		1813C21525073D7B00BDC530 /* EventTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813C21425073D7B00BDC530 /* EventTestUITests.swift */; };
 		181791DB259C6C45009BA40A /* NestedScrollDemoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181791DA259C6C45009BA40A /* NestedScrollDemoVC.swift */; };
+		182534F325C9202800449A91 /* TelInputTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182534F225C9202800449A91 /* TelInputTest.swift */; };
 		182C9D5925C009E600020E1C /* MemoryCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C9D5825C009E600020E1C /* MemoryCacheManager.swift */; };
 		187AF09B25C3D86400EF949D /* SafeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF09725C3D86400EF949D /* SafeTimer.swift */; };
 		187AF09C25C3D86400EF949D /* PeriodicExecution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF09825C3D86400EF949D /* PeriodicExecution.swift */; };
@@ -118,6 +119,7 @@
 		1813C21425073D7B00BDC530 /* EventTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTestUITests.swift; sourceTree = "<group>"; };
 		1813C21625073D7B00BDC530 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		181791DA259C6C45009BA40A /* NestedScrollDemoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedScrollDemoVC.swift; sourceTree = "<group>"; };
+		182534F225C9202800449A91 /* TelInputTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelInputTest.swift; sourceTree = "<group>"; };
 		182C9D5825C009E600020E1C /* MemoryCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCacheManager.swift; sourceTree = "<group>"; };
 		187AF09725C3D86400EF949D /* SafeTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeTimer.swift; sourceTree = "<group>"; };
 		187AF09825C3D86400EF949D /* PeriodicExecution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodicExecution.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		180B6DF9257F7D5F00CC03BB /* EventTest */ = {
 			isa = PBXGroup;
 			children = (
+				182534F125C9200800449A91 /* TelInput */,
 				187AF0AA25C3DC9800EF949D /* PerfectLock */,
 				187AF09625C3D86400EF949D /* SafeTimer */,
 				18FC756125C27F5F008716C9 /* MemoryCacheManager */,
@@ -340,6 +343,14 @@
 				181791DA259C6C45009BA40A /* NestedScrollDemoVC.swift */,
 			);
 			path = NestedScroll;
+			sourceTree = "<group>";
+		};
+		182534F125C9200800449A91 /* TelInput */ = {
+			isa = PBXGroup;
+			children = (
+				182534F225C9202800449A91 /* TelInputTest.swift */,
+			);
+			path = TelInput;
 			sourceTree = "<group>";
 		};
 		187AF09625C3D86400EF949D /* SafeTimer */ = {
@@ -709,6 +720,7 @@
 				18C59F0725A2E661001374DA /* DefaultInteractiveController.swift in Sources */,
 				18C59F1025A2E661001374DA /* TrastionDelegate.swift in Sources */,
 				182C9D5925C009E600020E1C /* MemoryCacheManager.swift in Sources */,
+				182534F325C9202800449A91 /* TelInputTest.swift in Sources */,
 				180B6E77257F7D5F00CC03BB /* InitializerTest.swift in Sources */,
 				181791DB259C6C45009BA40A /* NestedScrollDemoVC.swift in Sources */,
 				180B6F37257F81D200CC03BB /* ViewModel.swift in Sources */,
