@@ -44,6 +44,8 @@
 		187AF0A325C3D88500EF949D /* SecondCountDowner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF0A225C3D88500EF949D /* SecondCountDowner.swift */; };
 		187AF0AC25C3DCA600EF949D /* PerfectLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF0AB25C3DCA600EF949D /* PerfectLock.swift */; };
 		18B0AACA25B7FEA000041BD3 /* SDWebImageCodeAnalyse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0AAC925B7FEA000041BD3 /* SDWebImageCodeAnalyse.swift */; };
+		18B20B9825CD28B500B624FE /* bigImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B20B9725CD28B500B624FE /* bigImage.png */; };
+		18B20B9D25CD28CA00B624FE /* ImageDrawTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B20B9C25CD28CA00B624FE /* ImageDrawTest.swift */; };
 		18C59F0525A2E661001374DA /* UIViewController+CustomPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C59EF225A2E661001374DA /* UIViewController+CustomPresentation.swift */; };
 		18C59F0725A2E661001374DA /* DefaultInteractiveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C59EF525A2E661001374DA /* DefaultInteractiveController.swift */; };
 		18C59F0825A2E661001374DA /* DefaultPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C59EF625A2E661001374DA /* DefaultPresentationController.swift */; };
@@ -126,6 +128,8 @@
 		187AF0A225C3D88500EF949D /* SecondCountDowner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCountDowner.swift; sourceTree = "<group>"; };
 		187AF0AB25C3DCA600EF949D /* PerfectLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectLock.swift; sourceTree = "<group>"; };
 		18B0AAC925B7FEA000041BD3 /* SDWebImageCodeAnalyse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDWebImageCodeAnalyse.swift; sourceTree = "<group>"; };
+		18B20B9725CD28B500B624FE /* bigImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigImage.png; sourceTree = "<group>"; };
+		18B20B9C25CD28CA00B624FE /* ImageDrawTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDrawTest.swift; sourceTree = "<group>"; };
 		18C59EF225A2E661001374DA /* UIViewController+CustomPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+CustomPresentation.swift"; sourceTree = "<group>"; };
 		18C59EF525A2E661001374DA /* DefaultInteractiveController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultInteractiveController.swift; sourceTree = "<group>"; };
 		18C59EF625A2E661001374DA /* DefaultPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultPresentationController.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 		180B6DF9257F7D5F00CC03BB /* EventTest */ = {
 			isa = PBXGroup;
 			children = (
+				18B20B9625CD288300B624FE /* ImageDraw */,
 				182534FA25C93B3400449A91 /* README.md */,
 				182534F125C9200800449A91 /* TelInput */,
 				187AF0AA25C3DC9800EF949D /* PerfectLock */,
@@ -365,9 +370,18 @@
 		18B0AAC825B7FE4B00041BD3 /* SDWebImageCodeAnalyse */ = {
 			isa = PBXGroup;
 			children = (
-				182C9D5825C009E600020E1C /* MemoryCacheManager.swift */,
+				18B0AAC925B7FEA000041BD3 /* SDWebImageCodeAnalyse.swift */,
 			);
 			path = SDWebImageCodeAnalyse;
+			sourceTree = "<group>";
+		};
+		18B20B9625CD288300B624FE /* ImageDraw */ = {
+			isa = PBXGroup;
+			children = (
+				18B20B9725CD28B500B624FE /* bigImage.png */,
+				18B20B9C25CD28CA00B624FE /* ImageDrawTest.swift */,
+			);
+			path = ImageDraw;
 			sourceTree = "<group>";
 		};
 		18C59EEE25A2E661001374DA /* CustomPresentation */ = {
@@ -423,7 +437,7 @@
 		18FC756125C27F5F008716C9 /* MemoryCacheManager */ = {
 			isa = PBXGroup;
 			children = (
-				18B0AAC925B7FEA000041BD3 /* SDWebImageCodeAnalyse.swift */,
+				182C9D5825C009E600020E1C /* MemoryCacheManager.swift */,
 			);
 			path = MemoryCacheManager;
 			sourceTree = "<group>";
@@ -565,6 +579,7 @@
 				180B6EC6257F7D5F00CC03BB /* LaunchScreen.storyboard in Resources */,
 				180B6E76257F7D5F00CC03BB /* Assets.xcassets in Resources */,
 				182534FB25C93B3400449A91 /* README.md in Resources */,
+				18B20B9825CD28B500B624FE /* bigImage.png in Resources */,
 				18F5F5A92581CA3600C35490 /* README.txt in Resources */,
 				180B6EC7257F7D5F00CC03BB /* Main.storyboard in Resources */,
 			);
@@ -701,6 +716,7 @@
 				18C59F0825A2E661001374DA /* DefaultPresentationController.swift in Sources */,
 				180B6E74257F7D5F00CC03BB /* ThreadSafeTest.swift in Sources */,
 				180B6EC9257F7D5F00CC03BB /* RxChangeUIStateVC.swift in Sources */,
+				18B20B9D25CD28CA00B624FE /* ImageDrawTest.swift in Sources */,
 				18F5F58E2581C7F500C35490 /* WxShareDemoVC.swift in Sources */,
 				180B6ECE257F7D5F00CC03BB /* EONET.swift in Sources */,
 				1802B74F25A57E56000320E1 /* DefaultAnimator.swift in Sources */,
