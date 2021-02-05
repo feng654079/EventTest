@@ -29,11 +29,10 @@ class ImageDrawViewController: UIViewController {
     }
 }
 
-
-
 //MARK: -
 
 extension UIImage {
+    ///从bundle中加载图片
     static func image(name:String ,fromBundle:Bundle = Bundle.main) -> UIImage? {
         guard
             let path = fromBundle.path(forResource: name, ofType: nil) else {
@@ -42,6 +41,7 @@ extension UIImage {
         return UIImage(contentsOfFile: path)
     }
     
+    ///从bundle中加载图片,然后重绘到指定size
     static func loadImage(name:String ,
                           fromBundle:Bundle = Bundle.main,
                           toSize:CGSize,
@@ -54,6 +54,7 @@ extension UIImage {
         })
     }
     
+    ///重绘到指定Size
     func redraw(in queue:DispatchQueue = DispatchQueue.global(qos: .userInteractive),
                 to size:CGSize,
                 completion:@escaping (UIImage?) -> Void) {
