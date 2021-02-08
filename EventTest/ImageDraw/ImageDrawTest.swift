@@ -66,8 +66,6 @@ extension UIImage {
             completion(img)
         }
     }
-    
-    
 }
 //MARK: -
 extension ImageDrawViewController {

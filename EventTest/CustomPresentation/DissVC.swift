@@ -13,9 +13,7 @@ class DissVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+                
         self.view.backgroundColor = .lightGray
         
         let btn = UIButton()
