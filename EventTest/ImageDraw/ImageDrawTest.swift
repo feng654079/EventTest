@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreGraphics
+import SnapKit
 
 class ImageDrawViewController: UIViewController {
     
@@ -15,10 +16,12 @@ class ImageDrawViewController: UIViewController {
     
     let drawGradientView = DrawGradientView()
     
+    let gradientColorLabel = GradientColorLabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        testOriginImage()
+      
     }
     
     func setupUI() {
@@ -27,6 +30,9 @@ class ImageDrawViewController: UIViewController {
         
         drawGradientView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(drawGradientView)
+        
+        gradientColorLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(gradientColorLabel)
         
         imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -37,11 +43,52 @@ class ImageDrawViewController: UIViewController {
         drawGradientView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         drawGradientView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         drawGradientView.bottomAnchor.constraint(equalTo: imageView.topAnchor,constant: -10.0).isActive = true
+        
+//       gradientColorLabel
+//           .widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
+//        gradientColorLabel
+//            .heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        gradientColorLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, constant: 0.0).isActive = true
+        gradientColorLabel
+            .centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive  = true
+        gradientColorLabel
+            .topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        
+        
+        
+        gradientColorLabel.setLabelGradientProperty { (label, gradientLayer) in
+            
+            gradientLayer.colors = [
+                UIColor.hexadecimalColor(hexadecimal: "ff0000").cgColor,
+                UIColor.hexadecimalColor(hexadecimal: "00ff00").cgColor
+            ]
+            gradientLayer.anchorPoint = .zero
+            gradientLayer.startPoint = .init(x: 0.0, y: 0.0)
+            gradientLayer.endPoint = .init(x: 1.0, y: 1.0)
+            gradientLayer.locations = [0.0,1.0]
+            
+            label.text = "are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?"
+            label.numberOfLines = 0
+            label.font = UIFont.systemFont(ofSize: 40.0)
+        }
+        
+        
+
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        testOriginImage()
+        
+    
+        ///修改只需要重新调用即可
+        gradientColorLabel.setLabelGradientProperty { (label, _) in
+            label.text = "123456"
+        }
     }
 }
 
 //MARK: -
-
 extension UIImage {
     ///从bundle中加载图片
     static func image(name:String ,fromBundle:Bundle = Bundle.main) -> UIImage? {
@@ -58,9 +105,9 @@ extension UIImage {
                           toSize:CGSize,
                           completion: @escaping (UIImage?) -> Void) {
         let img = image(name: name, fromBundle: fromBundle)
-        img?.redraw(to: toSize, completion: { (result) in
+        img?.redraw2(to: toSize, completion: { (result) in
             DispatchQueue.main.async {
-                completion(img)
+                completion(result)
             }
         })
     }
@@ -69,7 +116,7 @@ extension UIImage {
     func redraw(in queue:DispatchQueue = DispatchQueue.global(qos: .userInteractive),
                 to size:CGSize,
                 completion:@escaping (UIImage?) -> Void) {
-       queue.async {
+        queue.async {
             UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
             self.draw(in: .init(x: 0, y: 0, width: size.width, height: size.height))
             let img = UIGraphicsGetImageFromCurrentImageContext()
@@ -77,13 +124,41 @@ extension UIImage {
             completion(img)
         }
     }
+    
+    ///重绘到指定Size
+    func redraw2(in queue:DispatchQueue = DispatchQueue.global(qos: .userInitiated),
+                 to size:CGSize,
+                 completion:@escaping (UIImage?) -> Void) {
+        queue.async {
+            guard size != .zero,
+                  let cgImage = self.cgImage else {
+                completion(nil)
+                return
+            }
+            
+            let colorSpace = CGColorSpaceCreateDeviceRGB()
+            let width = Int(size.width)
+            let height = Int(size.height)
+            guard let ctx = CGContext.init(data: nil, width: width, height: height, bitsPerComponent: cgImage.bitsPerComponent, bytesPerRow: 4 * width, space: colorSpace, bitmapInfo:cgImage.alphaInfo.rawValue ) else {
+                completion(nil)
+                return
+            }
+            ctx.draw(cgImage, in: .init(x: 0, y: 0, width: width, height: height))
+            if let resultCGImage = ctx.makeImage() {
+                completion(UIImage(cgImage: resultCGImage))
+            } else {
+                completion(nil)
+            }
+            
+            
+        }
+    }
 }
 //MARK: -
 extension ImageDrawViewController {
     func testOriginImage() {
-       // self.imageView.image = UIImage.image(name: "bigImage.png")
         
-        UIImage.loadImage(name: "bigImage.png", toSize: .init(width: 100.0, height: 100.0)) {
+        UIImage.loadImage(name: "bigImage.png", toSize:.init(width: 100.0, height: 100.0)) {
             [weak self]( image) in
             self?.imageView.image = image
         }
@@ -151,19 +226,64 @@ class DrawGradientView: UIView  {
         
         let ctx = UIGraphicsGetCurrentContext()
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-
+        
         //red
         var components1:[CGFloat] = [1.0,0.0,0.0,1.0]
         let cgColor1 = CGColor.init(colorSpace: colorSpace, components: &components1)
-
+        
         //green
         var components2:[CGFloat] = [0.0,1.0,0.5,1.0]
         let cgColor2 = CGColor.init(colorSpace: colorSpace, components: &components2)
-
+        
         var locations:[CGFloat] = [0.0,1.0]
-
+        
         if let gradient = CGGradient.init(colorsSpace: colorSpace, colors: [cgColor1,cgColor2] as CFArray, locations: &locations) {
             ctx?.drawLinearGradient(gradient, start: .zero, end: .init(x:0, y: rect.size.height), options: .drawsAfterEndLocation)
         }
     }
+    
+    
+}
+
+//MARK:- 可以显示梯度颜色的Label
+
+class GradientColorLabel: UIView {
+    
+    let label = UILabel()
+    let gradientLayer = CAGradientLayer()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commomInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        debugPrint(#function,frame)
+        label.frame = self.bounds
+        gradientLayer.frame = self.bounds
+        invalidateIntrinsicContentSize()
+    }
+    
+    func commomInit() {
+        layer.addSublayer(gradientLayer)
+   
+        gradientLayer.mask = label.layer
+    }
+    
+    /// auto layout
+    override var intrinsicContentSize: CGSize {
+        return label.sizeThatFits(.init(width: bounds.width, height: CGFloat.greatestFiniteMagnitude))
+    }
+    
+    
+    ///配置属性的方法
+    func setLabelGradientProperty(_ setter:(UILabel,CAGradientLayer) -> Void) {
+        setter(label,gradientLayer)
+        invalidateIntrinsicContentSize()
+    }
+    
 }
