@@ -8,12 +8,15 @@
 
 import Foundation
 import CoreGraphics
+import SnapKit
 
 class ImageDrawViewController: UIViewController {
     
     let imageView = UIImageView()
     
     let drawGradientView = DrawGradientView()
+    
+    let gradientColorLabel = GradientColorLabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,9 @@ class ImageDrawViewController: UIViewController {
         drawGradientView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(drawGradientView)
         
+        gradientColorLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(gradientColorLabel)
+        
         imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -37,11 +43,48 @@ class ImageDrawViewController: UIViewController {
         drawGradientView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         drawGradientView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         drawGradientView.bottomAnchor.constraint(equalTo: imageView.topAnchor,constant: -10.0).isActive = true
+        
+//       gradientColorLabel
+//           .widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
+//        gradientColorLabel
+//            .heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        gradientColorLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, constant: 0.0).isActive = true
+        gradientColorLabel
+            .centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive  = true
+        gradientColorLabel
+            .topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        
+        
+        
+        gradientColorLabel.setLabelGradientProperty { (label, gradientLayer) in
+            
+            gradientLayer.colors = [
+                UIColor.hexadecimalColor(hexadecimal: "ff0000").cgColor,
+                UIColor.hexadecimalColor(hexadecimal: "00ff00").cgColor
+            ]
+            gradientLayer.anchorPoint = .zero
+            gradientLayer.startPoint = .init(x: 0.0, y: 0.0)
+            gradientLayer.endPoint = .init(x: 1.0, y: 1.0)
+            gradientLayer.locations = [0.0,1.0]
+            
+            label.text = "are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?are you ok?"
+            label.numberOfLines = 0
+            label.font = UIFont.systemFont(ofSize: 40.0)
+        }
+        
+        
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         testOriginImage()
+        
+    
+        ///修改只需要重新调用即可
+        gradientColorLabel.setLabelGradientProperty { (label, _) in
+            label.text = "123456"
+        }
     }
 }
 
@@ -92,6 +135,7 @@ extension UIImage {
                 completion(nil)
                 return
             }
+            
             let colorSpace = CGColorSpaceCreateDeviceRGB()
             let width = Int(size.width)
             let height = Int(size.height)
@@ -113,7 +157,6 @@ extension UIImage {
 //MARK: -
 extension ImageDrawViewController {
     func testOriginImage() {
-        // self.imageView.image = UIImage.image(name: "bigImage.png")
         
         UIImage.loadImage(name: "bigImage.png", toSize:.init(width: 100.0, height: 100.0)) {
             [weak self]( image) in
@@ -199,5 +242,48 @@ class DrawGradientView: UIView  {
         }
     }
     
+    
+}
+
+//MARK:- 可以显示梯度颜色的Label
+
+class GradientColorLabel: UIView {
+    
+    let label = UILabel()
+    let gradientLayer = CAGradientLayer()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commomInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        debugPrint(#function,frame)
+        label.frame = self.bounds
+        gradientLayer.frame = self.bounds
+        invalidateIntrinsicContentSize()
+    }
+    
+    func commomInit() {
+        layer.addSublayer(gradientLayer)
+   
+        gradientLayer.mask = label.layer
+    }
+    
+    /// auto layout
+    override var intrinsicContentSize: CGSize {
+        return label.sizeThatFits(.init(width: bounds.width, height: CGFloat.greatestFiniteMagnitude))
+    }
+    
+    
+    ///配置属性的方法
+    func setLabelGradientProperty(_ setter:(UILabel,CAGradientLayer) -> Void) {
+        setter(label,gradientLayer)
+        invalidateIntrinsicContentSize()
+    }
     
 }
