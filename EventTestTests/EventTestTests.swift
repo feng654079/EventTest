@@ -21,7 +21,26 @@ class EventTestTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-   
+    func testKeyValueExpressWithDictionary() {
+        let kv1:KeyValue = ["name":"xxx"]
+        let kv2:KeyValue = [:]
+        let kv3:KeyValue = ["k1":"v1","k2":"v2"]
+        
+        if kv1.key != "name" || kv1.value != "xxx" {
+            fatalError()
+        }
+        
+        if kv2.key != "" || kv2.value != "" {
+            fatalError()
+        }
+        
+        if kv3.key != "k1" || kv3.value != "v1" {
+            fatalError()
+        }
+        
+        debugPrint("KeyValue:ExpressibleByDictionaryLiteral Test Success!")
+    }
+    
     func testDateFormateNormal() {
         self.measure {
             let formatter = DateFormatter()

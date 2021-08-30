@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fsn-cx-T4m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -36,7 +36,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-897" y="74"/>
+            <point key="canvasLocation" x="-897.10144927536237" y="73.660714285714278"/>
         </scene>
         <!--Wx Share DemoVC-->
         <scene sceneID="X26-af-Zdz">
@@ -61,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wsr-G9-OhQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-197" y="746"/>
+            <point key="canvasLocation" x="-197.10144927536234" y="745.98214285714278"/>
         </scene>
         <!--Async Render View Controller-->
         <scene sceneID="ZRy-2r-ZP7">
@@ -271,21 +271,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mRx-NX-1KT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="653.62318840579712" y="79.6875"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="yP8-FP-lPA">
-            <objects>
-                <viewController id="g4X-V4-Zj5" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LyE-8W-bNB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="uX7-NI-AlD"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mK7-ef-Qop" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-897" y="741"/>
         </scene>
     </scenes>
     <resources>

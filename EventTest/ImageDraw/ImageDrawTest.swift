@@ -9,6 +9,7 @@
 import Foundation
 import CoreGraphics
 import SnapKit
+import CoreText
 
 class ImageDrawViewController: UIViewController {
     
@@ -22,6 +23,12 @@ class ImageDrawViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
       
+        if  let availabelFontNames = CTFontManagerCopyAvailableFontFamilyNames() as? [String] {
+            let isEqualToUIFontFamilayNames = availabelFontNames == UIFont.familyNames
+            debugPrint(availabelFontNames,isEqualToUIFontFamilayNames)
+        }
+        
+         
     }
     
     func setupUI() {
@@ -88,81 +95,36 @@ class ImageDrawViewController: UIViewController {
     }
 }
 
-//MARK: -
-extension UIImage {
-    ///从bundle中加载图片
-    static func image(name:String ,fromBundle:Bundle = Bundle.main) -> UIImage? {
-        guard
-            let path = fromBundle.path(forResource: name, ofType: nil) else {
-            return nil
-        }
-        return UIImage(contentsOfFile: path)
-    }
-    
-    ///从bundle中加载图片,然后重绘到指定size
-    static func loadImage(name:String ,
-                          fromBundle:Bundle = Bundle.main,
-                          toSize:CGSize,
-                          completion: @escaping (UIImage?) -> Void) {
-        let img = image(name: name, fromBundle: fromBundle)
-        img?.redraw2(to: toSize, completion: { (result) in
-            DispatchQueue.main.async {
-                completion(result)
-            }
-        })
-    }
-    
-    ///重绘到指定Size
-    func redraw(in queue:DispatchQueue = DispatchQueue.global(qos: .userInteractive),
-                to size:CGSize,
-                completion:@escaping (UIImage?) -> Void) {
-        queue.async {
-            UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-            self.draw(in: .init(x: 0, y: 0, width: size.width, height: size.height))
-            let img = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            completion(img)
-        }
-    }
-    
-    ///重绘到指定Size
-    func redraw2(in queue:DispatchQueue = DispatchQueue.global(qos: .userInitiated),
-                 to size:CGSize,
-                 completion:@escaping (UIImage?) -> Void) {
-        queue.async {
-            guard size != .zero,
-                  let cgImage = self.cgImage else {
-                completion(nil)
-                return
-            }
-            
-            let colorSpace = CGColorSpaceCreateDeviceRGB()
-            let width = Int(size.width)
-            let height = Int(size.height)
-            guard let ctx = CGContext.init(data: nil, width: width, height: height, bitsPerComponent: cgImage.bitsPerComponent, bytesPerRow: 4 * width, space: colorSpace, bitmapInfo:cgImage.alphaInfo.rawValue ) else {
-                completion(nil)
-                return
-            }
-            ctx.draw(cgImage, in: .init(x: 0, y: 0, width: width, height: height))
-            if let resultCGImage = ctx.makeImage() {
-                completion(UIImage(cgImage: resultCGImage))
-            } else {
-                completion(nil)
-            }
-            
-            
-        }
-    }
-}
+
 //MARK: -
 extension ImageDrawViewController {
     func testOriginImage() {
         
-        UIImage.loadImage(name: "bigImage.png", toSize:.init(width: 100.0, height: 100.0)) {
-            [weak self]( image) in
-            self?.imageView.image = image
-        }
+//        UIImage.loadImage(name: "bigImage.png", toSize:.init(width: 100.0, height: 100.0)) {
+//            [weak self]( image) in
+//            self?.imageView.image = image
+//        }
+        
+        
+//        UIImage.loadImage2(name: "bigImage.png", toSize: .init(width: 100.0, height: 100.0)) { [weak self] (image) in
+//            self?.imageView.image = image
+//        }
+        
+     
+
+//        if
+//            let path = Bundle.main.path(forResource: "bigImage.png", ofType: nil)
+//           {
+//            let fileURL = URL(fileURLWithPath: path)
+//            self.imageView.sd_setImage(with: fileURL)
+//
+//        }
+        
+        //KeyValue.testKeyValue()
+        
+        AlamofireTest().testUpload()
     }
+    
 }
 
 

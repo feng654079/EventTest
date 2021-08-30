@@ -22,6 +22,7 @@ class SDWebImageCodeAnalyseVC: UIViewController {
     }
     
     func setupUI() {
+        
         self.view.addSubview(imageView)
         self.view.addSubview(refreshBtn)
         

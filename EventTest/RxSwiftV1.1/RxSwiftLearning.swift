@@ -310,6 +310,8 @@ extension RxSwiftLearningViewController {
             
         }
         
+        
+        
         //合并订阅多个序列,当任意一个序列发出元素时,订阅者都能收到
         _example(name: "merage") {
             let left  = PublishSubject<String>()

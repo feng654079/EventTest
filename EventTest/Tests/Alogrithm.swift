@@ -12,7 +12,7 @@ public struct Queue<T> {
     fileprivate var array = [T?]()
     fileprivate var head = 0
     
-    public var count: Int {
+    public var count: Int { 
         return array.count - head
     }
     

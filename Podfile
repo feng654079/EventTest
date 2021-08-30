@@ -12,6 +12,8 @@ target 'EventTest' do
   pod 'RxSwift'
   pod 'SDWebImage'
   pod 'RealmSwift'
+  pod 'Texture'
+  pod "PromiseKit", "~> 6.8"
   
   target 'EventTestTests' do
     inherit! :search_paths

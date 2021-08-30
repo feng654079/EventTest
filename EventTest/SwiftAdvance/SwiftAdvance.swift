@@ -62,8 +62,6 @@ fileprivate func test() {
     _ = ints.isSubset(of: strings) {
         String($0) == $1
     }
-    
-    
 }
 
 @_specialize(exported: true, where T == Int)
@@ -71,7 +69,6 @@ fileprivate func test() {
 public func a<T:CustomStringConvertible>(p:T) {
     debugPrint(p.description)
 }
-
 
 extension Sequence {
     func  all(match predicate:(Element) throws -> Bool) rethrows -> Bool {

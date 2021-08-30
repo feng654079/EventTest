@@ -42,7 +42,8 @@ class ViewController: UIViewController {
        //debugPrint( UIViewController.getCurrentController())
        // testCountDown()
         
-        testExpressParse()
+       // testExpressParse()
+        testCornerRadius()
     }
 
     @objc func longPressAction(gesture:UIGestureRecognizer) {
@@ -93,7 +94,6 @@ class ViewController: UIViewController {
             debugPrint("find item:\(item) idx:\(idx ?? -1)")
         }
         
-        
         for item in sortedArr  {
             testBlock(item)
         }
@@ -101,9 +101,6 @@ class ViewController: UIViewController {
         testBlock(1000)
     }
   
-    
-    
-    
     func printAllFontNames() {
         let familyNames = UIFont.familyNames
         for familyName in familyNames {
@@ -329,3 +326,63 @@ extension ViewController {
         }
     }
 }
+
+//MARK: - test coradius
+
+extension ViewController {
+    func testCornerRadius() {
+        let controlPoint = CGPoint(x: 200, y: 200)
+        let layer = CAShapeLayer()
+        layer.fillColor = UIColor.red.cgColor
+        layer.path = UIBezierPath.createMaskRoundedCorners(controlPoint: controlPoint, verticalLen: 20, horizentalLen: 20, direction: .toRightBottom).cgPath
+        view.layer.addSublayer(layer)
+    }
+}
+
+
+extension UIBezierPath {
+    
+    enum Direction {
+        case toLeftTop
+        case toLeftBottom
+        case toRightTop
+        case toRightBottom
+    }
+    
+    /// 绘制一个圆角这招路径
+    /// - Parameters:
+    ///   - controlPoint: 控制点
+    ///   - verticalLen: 水平大小
+    ///   - horizentalLen: 竖直方向的长度
+    ///   - direction: 圆角开口的相对于控制点的朝向
+    /// - Returns: 返回反圆角路径
+    static func createMaskRoundedCorners
+    (controlPoint:CGPoint,verticalLen:CGFloat,horizentalLen:CGFloat ,direction:Direction)
+    -> UIBezierPath {
+        
+        let firstPoint:CGPoint
+        let secondPoint:CGPoint
+        switch direction {
+        case .toLeftTop:
+            firstPoint = CGPoint(x: controlPoint.x - horizentalLen, y: controlPoint.y)
+            secondPoint = CGPoint(x: controlPoint.x, y: controlPoint.y - verticalLen)
+        case .toLeftBottom:
+            firstPoint = CGPoint(x: controlPoint.x - horizentalLen, y: controlPoint.y)
+            secondPoint = CGPoint(x: controlPoint.x, y: controlPoint.y + verticalLen)
+        case .toRightTop:
+            firstPoint = CGPoint(x: controlPoint.x + horizentalLen, y: controlPoint.y)
+            secondPoint = CGPoint(x: controlPoint.x , y: controlPoint.y - verticalLen)
+        case .toRightBottom:
+            firstPoint = CGPoint(x: controlPoint.x + horizentalLen, y: controlPoint.y)
+            secondPoint = CGPoint(x: controlPoint.x , y: controlPoint.y + verticalLen)
+        }
+        
+        let path = UIBezierPath()
+        path.move(to: firstPoint)
+        path.addQuadCurve(to: secondPoint, controlPoint: controlPoint)
+        path.addLine(to: controlPoint)
+        path.close()
+        return path
+    }
+}
+
