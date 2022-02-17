@@ -12,16 +12,40 @@ import Alamofire
 
 struct AlamofireTest {
     func sendTest() {
+        
+      //  let request:Request = LoginRequest(userName: "15847209769", password: "a11111111"
+        
+        let request:Request = UserInfoRequest()
+        ClientFactory.httpSharedClient.send(
+            
+            request)
+        { data, error in
+                if error != nil {
+                    debugPrint("error:\(error!.getNSErrorReason())")
+                    return
+                }
+                
+                if data != nil {
+                    let resultStr = String.init(data: data!, encoding: .utf8) ?? "数据不能转为String"
+                    debugPrint(resultStr)
+                }
+            }
+    }
+    
+    
+    func sendDemo1() {
         let testUrl = "http://192.168.1.103:8111/quotation/getCurrentDataByCondition?findType=1&pageNum=1&pageSize=2000&firstCategoryId=4"
 
-        let request = AF.request(testUrl,headers: ["aaa":"bbb"])
+        
+        let session = Session(startRequestsImmediately:false)
+        
+        let request = session.request(testUrl,headers: ["aaa":"bbb"])
 
        request.response { (dataResponse) in
                 debugPrint(2)
                 debugPrint(dataResponse)
             }
-        
-        
+        request.resume()
     }
     
     func testUpload() {

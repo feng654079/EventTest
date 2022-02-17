@@ -31,7 +31,7 @@ class ViewController: UIViewController {
        // testQuickSort()
         //testBinarySearchTree()
         //sellTicketTest()
-        //testAlamofire()
+        testAlamofire()
        // testCustomPresent()
         
 //        let host = "https://www.baidu.com/?name="
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
        // testCountDown()
         
        // testExpressParse()
-        testCornerRadius()
+       // testCornerRadius()
     }
 
     @objc func longPressAction(gesture:UIGestureRecognizer) {
@@ -134,8 +134,8 @@ class ViewController: UIViewController {
     }
     
     func testCustomPresent() {
-        let redVC = DissVC()
-        self.showToolBarPresent(viewController: redVC)
+//        let redVC = DissVC()
+//        self.showToolBarPresent(viewController: redVC)
         //self.present(redVC, animated: true, completion: nil)
     }
 }

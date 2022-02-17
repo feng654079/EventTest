@@ -47,6 +47,10 @@ class UnFairLock: NSLocking {
         _lock = .allocate(capacity: 1)
     }
     
+    deinit {
+        _lock.deallocate()
+    }
+    
     @inlinable
     func lock() {
         os_unfair_lock_lock(_lock)

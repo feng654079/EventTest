@@ -1,30 +1,63 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'EventTest' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
 
-  # Pods for EventTest
+def common_pods
+
+  # network
   pod 'Alamofire'
+  
+  # layout
   pod 'SnapKit'
+  
+  # reactive programing
   pod 'RxCocoa'
   pod 'RxSwift'
+  
+  # newwork load image
   pod 'SDWebImage'
+  
+  # database
   pod 'RealmSwift'
+  pod 'YYKit'
+  
   pod 'Texture'
   pod "PromiseKit", "~> 6.8"
   
-  target 'EventTestTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'EventTestUITests' do
-    # Pods for testing
-  end
-
+  # Animation
+  ## animation json render
+  pod 'lottie-ios'
+  pod 'Hero'
+  pod 'pop'
+  # pod 'Spring'
+  pod 'JXPhotoBrowser','~> 3.1'
+  
+  # 视频播放
+  pod ''
 end
+
+target 'EventTest' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+   
+  common_pods
+
+
+  target 'TextEditingDemo' do
+    common_pods
+  end
+
+  target 'AnimationDemo' do
+    common_pods
+  end
+  
+  target 'ImageBrowerDemo' do
+    common_pods
+  end
+  
+end
+
+
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
